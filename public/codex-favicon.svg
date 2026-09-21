@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Codex">
+  <rect width="120" height="120" rx="22" fill="#fff7eb"/>
+  <g fill="#17171b">
+    <path d="M52 12 98 38 80 48 52 32 24 48V28z"/>
+    <path d="M24 48 52 32l20 11-28 16z" fill="#3a3a40"/>
+    <path d="m38 56 46-26 14 8-46 26-28 16V64z"/>
+    <path d="m38 72 46-26 14 8-46 26-28 16V80z" fill="#29292e"/>
+    <path d="m52 80 46-26v20l-46 26-28-16 14-8z" fill="#3a3a40"/>
+    <path d="m78 49 20-11v16L78 65z" fill="#71717a"/>
+    <path d="m78 65 20-11v20L78 85z" fill="#52525b"/>
+  </g>
+</svg>
