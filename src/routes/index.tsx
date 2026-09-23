@@ -134,11 +134,11 @@ function Landing() {
 
           {/* Dual Action CTA Buttons matching eduAct */}
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Link to="/workspace" className="pill">
+            <Link to="/login" search={{ redirect: "/workspace" }} className="pill">
               <span>Take Now</span>
               <ArrowRight className="size-4" />
             </Link>
-            <Link to="/assistant" className="pill-secondary">
+            <Link to="/login" search={{ redirect: "/assistant" }} className="pill-secondary">
               <Bot className="size-4 text-primary" />
               <span>Explore Assistant &rarr;</span>
             </Link>

@@ -13,6 +13,12 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/login")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    redirect:
+      search.redirect === "/assistant" || search.redirect === "/workspace"
+        ? search.redirect
+        : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Portal Login — Academia–Industry Collaboration" },
@@ -28,6 +34,8 @@ export const Route = createFileRoute("/login")({
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { redirect } = Route.useSearch();
+  const destination = redirect ?? "/workspace";
   const [email, setEmail] = useState(DEMO_USERS.student.email);
   const [password, setPassword] = useState(DEMO_USERS.student.password);
   const [showPassword, setShowPassword] = useState(false);
@@ -38,9 +46,9 @@ function LoginPage() {
       useEffect(() => {
         const current = getCurrentUser();
         if (current) {
-          navigate({ to: "/workspace", replace: true });
+          navigate({ to: destination, replace: true });
     }
-  }, [navigate]);
+  }, [destination, navigate]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -70,7 +78,7 @@ function LoginPage() {
         role: "student",
       });
 
-      navigate({ to: "/workspace", replace: true });
+      navigate({ to: destination, replace: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to sign in. Please try again.");
     } finally {
