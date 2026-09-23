@@ -4,7 +4,6 @@ import { DEMO_USERS, getCurrentUser, isValidEmail, login, type UserRole } from "
 import {
   GraduationCap,
   BookOpen,
-  ShieldCheck,
   ArrowRight,
   Mail,
   Lock,
@@ -21,7 +20,7 @@ export const Route = createFileRoute("/login")({
       {
         name: "description",
         content:
-          "Sign in to the Academia–Industry Collaboration Portal with your Student, Faculty, or Admin account.",
+          "Sign in to the Academia–Industry Collaboration Portal with your Student or Faculty account.",
       },
     ],
   }),
@@ -54,14 +53,6 @@ const ROLES: RoleMeta[] = [
     badge: "Academic Lead",
     description: "Manage curriculum, research projects, grants, and student collaborations",
     icon: BookOpen,
-    redirectPath: "/dashboard",
-  },
-  {
-    role: "admin",
-    title: "Admin",
-    badge: "System Governance",
-    description: "Oversee institutional partnerships, compliance, and portal analytics",
-    icon: ShieldCheck,
     redirectPath: "/dashboard",
   },
 ];

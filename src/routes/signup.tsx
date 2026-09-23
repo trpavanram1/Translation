@@ -4,7 +4,6 @@ import { getCurrentUser, isValidEmail, signUp, type UserRole } from "@/lib/auth"
 import {
   GraduationCap,
   BookOpen,
-  ShieldCheck,
   ArrowRight,
   User,
   Mail,
@@ -23,7 +22,7 @@ export const Route = createFileRoute("/signup")({
       {
         name: "description",
         content:
-          "Register a new Student, Faculty, or Administrator account on the portal.",
+          "Register a new Student or Faculty account on the portal.",
       },
     ],
   }),
@@ -63,16 +62,6 @@ const ROLE_OPTIONS: RoleOption[] = [
     redirectTarget: "/dashboard",
     defaultOrg: "Central University of Technology",
     defaultDept: "Applied AI & Linguistics",
-  },
-  {
-    role: "admin",
-    title: "Admin",
-    badge: "Administrator",
-    description: "Portal administration, collaboration governance, and institutional analytics",
-    icon: ShieldCheck,
-    redirectTarget: "/dashboard",
-    defaultOrg: "Academic-Industry Consortium",
-    defaultDept: "Operations Directorate",
   },
 ];
 
@@ -179,7 +168,7 @@ function SignupPage() {
             </Link>
           </div>
           <p className="mt-2.5 text-sm text-muted-foreground">
-            Create an account to join the network as a Student, Faculty member, or Administrator.
+            Create an account to join the network as a Student or Faculty member.
           </p>
         </div>
 
