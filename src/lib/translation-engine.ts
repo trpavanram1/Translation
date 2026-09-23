@@ -1227,6 +1227,13 @@ export interface LexiconEntry {
 }
 
 export const VOCABULARY: LexiconEntry[] = [
+  {
+    hindi: "गाय",
+    santali: { latin: "gai", olChiki: "ᱜᱟᱹᱭ", devanagari: "गाय" },
+    ho: { latin: "Gaai", devanagari: "गाय" },
+    mundari: { latin: "uri", devanagari: "गाय" },
+    pos: "noun",
+  },
   // Conversational Question N-Grams & Phrases
   {
     hindi: "आप कैसे हैं",

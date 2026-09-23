@@ -81,8 +81,6 @@ function SignupPage() {
   const [selectedRole, setSelectedRole] = useState<SelectableRole>("student");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [organization, setOrganization] = useState("");
-  const [department, setDepartment] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -99,13 +97,6 @@ function SignupPage() {
 
   function handleRoleChange(role: SelectableRole) {
     setSelectedRole(role);
-    const opt = ROLE_OPTIONS.find((r) => r.role === role);
-    if (opt && !organization) {
-      setOrganization(opt.defaultOrg);
-    }
-    if (opt && !department) {
-      setDepartment(opt.defaultDept);
-    }
     setError("");
   }
 
@@ -116,8 +107,6 @@ function SignupPage() {
     // Comprehensive client-side validations
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
-    const trimmedOrg = organization.trim();
-    const trimmedDept = department.trim();
 
     if (!trimmedName) {
       setError("Please provide your full legal name.");
@@ -128,7 +117,7 @@ function SignupPage() {
       return;
     }
     if (!trimmedEmail) {
-      setError("Please provide an institutional or corporate email address.");
+      setError("Please provide your email address.");
       return;
     }
     if (!isValidEmail(trimmedEmail)) {
@@ -156,8 +145,6 @@ function SignupPage() {
         email: trimmedEmail,
         password,
         role: selectedRole,
-        organization: trimmedOrg || undefined,
-        department: trimmedDept || undefined,
       });
 
       navigate({ to: "/workspace", replace: true });
@@ -275,7 +262,7 @@ function SignupPage() {
 
             <div>
               <label htmlFor="email" className="mb-1.5 block text-xs font-bold text-foreground">
-                Institutional / Corporate Email *
+                Email *
               </label>
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
@@ -287,43 +274,8 @@ function SignupPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-xl border border-input bg-background py-2.5 pr-3 pl-9 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
-                  placeholder="name@university.edu or name@company.com"
+                  placeholder="name@example.com"
                   required
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div>
-                <label htmlFor="org" className="mb-1.5 block text-xs font-bold text-foreground">
-                  University / Organization
-                </label>
-                <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
-                    <Building className="size-4" />
-                  </div>
-                  <input
-                    id="org"
-                    type="text"
-                    value={organization}
-                    onChange={(e) => setOrganization(e.target.value)}
-                    className="w-full rounded-xl border border-input bg-background py-2.5 pr-3 pl-9 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
-                    placeholder={activeOption.defaultOrg}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="dept" className="mb-1.5 block text-xs font-bold text-foreground">
-                  Department / Unit
-                </label>
-                <input
-                  id="dept"
-                  type="text"
-                  value={department}
-                  onChange={(e) => setDepartment(e.target.value)}
-                  className="w-full rounded-xl border border-input bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
-                  placeholder={activeOption.defaultDept}
                 />
               </div>
             </div>

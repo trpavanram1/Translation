@@ -745,9 +745,9 @@ function AssistantPage() {
                     </p>
                   </div>
 
-                  {/* Devanagari guide */}
+                  {/* Hindi guide */}
                   <div className="mt-2 text-xs font-semibold text-inksoft">
-                    <span className="font-bold">Devanagari:</span>{" "}
+                    <span className="font-bold">Hindi:</span>{" "}
                     {hiToAllResult.santali.devanagari}
                   </div>
                 </div>
@@ -802,10 +802,10 @@ function AssistantPage() {
                     </p>
                   </div>
 
-                  {/* Devanagari guide */}
+                  {/* Hindi guide */}
                   <div className="mt-3">
                     <p className="text-[11px] font-extrabold text-inksoft uppercase">
-                      Devanagari Transliteration
+                      Hindi Transliteration
                     </p>
                     <p className="mt-0.5 text-base font-bold text-primary">
                       {hiToAllResult.ho.devanagari}
@@ -856,10 +856,10 @@ function AssistantPage() {
                     </p>
                   </div>
 
-                  {/* Devanagari guide */}
+                  {/* Hindi guide */}
                   <div className="mt-3">
                     <p className="text-[11px] font-extrabold text-inksoft uppercase">
-                      Devanagari Transliteration
+                      Hindi Transliteration
                     </p>
                     <p className="mt-0.5 text-base font-bold text-primary">
                       {hiToAllResult.mundari.devanagari}
