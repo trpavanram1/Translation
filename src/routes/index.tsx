@@ -3,9 +3,6 @@ import { Brand, PortalBackdrop, LanguagePicker, OfflineChip } from "@/components
 import { translateToTribal, useLanguage } from "@/lib/lang";
 import { getCurrentUser } from "@/lib/auth";
 import {
-  GraduationCap,
-  Building2,
-  BookOpen,
   ArrowRight,
   Sparkles,
   Bot,
@@ -15,7 +12,6 @@ import {
   CheckCircle2,
   LogIn,
   LayoutDashboard,
-  ShieldCheck,
   Zap,
   Globe,
   Award,
@@ -435,68 +431,6 @@ function Landing() {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Stakeholder Roles Grid matching bottom row in the image */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <div className="text-center">
-          <p className="text-xs font-extrabold uppercase tracking-wider text-primary">
-            Collaboration Roles
-          </p>
-          <h2 className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">
-            Choose Your Gateway to CODEX
-          </h2>
-        </div>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <Link
-            to="/login"
-            className="group rounded-3xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary/50"
-          >
-            <div className="edu-icon-badge">
-              <GraduationCap className="size-6" />
-            </div>
-            <h3 className="mt-4 text-lg font-bold text-foreground group-hover:text-primary">Students</h3>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-              Access vernacular learning kits, participate in NLP research capstones, and apply for industry internships.
-            </p>
-            <span className="mt-4 inline-flex items-center text-xs font-bold text-primary">
-              Student Sign In &rarr;
-            </span>
-          </Link>
-
-          <Link
-            to="/login"
-            className="group rounded-3xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary/50"
-          >
-            <div className="edu-icon-badge">
-              <BookOpen className="size-6" />
-            </div>
-            <h3 className="mt-4 text-lg font-bold text-foreground group-hover:text-primary">Faculty</h3>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-              Lead pedagogy research, validate FLN curriculum materials, guide capstones, and access R&D grants.
-            </p>
-            <span className="mt-4 inline-flex items-center text-xs font-bold text-primary">
-              Faculty Sign In &rarr;
-            </span>
-          </Link>
-
-          <Link
-            to="/login"
-            className="group rounded-3xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary/50"
-          >
-            <div className="edu-icon-badge">
-              <ShieldCheck className="size-6" />
-            </div>
-            <h3 className="mt-4 text-lg font-bold text-foreground group-hover:text-primary">Admin</h3>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-              Govern partnerships, verify institutional submissions, and track classroom adoption metrics.
-            </p>
-            <span className="mt-4 inline-flex items-center text-xs font-bold text-primary">
-              Admin Sign In &rarr;
-            </span>
-          </Link>
         </div>
       </section>
 

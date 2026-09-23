@@ -1,9 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { getCurrentUser, isValidEmail, signUp, type UserRole } from "@/lib/auth";
+import { getCurrentUser, isValidEmail, signUp } from "@/lib/auth";
 import {
   GraduationCap,
-  BookOpen,
   ArrowRight,
   User,
   Mail,
@@ -22,52 +21,15 @@ export const Route = createFileRoute("/signup")({
       {
         name: "description",
         content:
-          "Register a new Student or Faculty account on the portal.",
+          "Register a new Student account on the portal.",
       },
     ],
   }),
   component: SignupPage,
 });
 
-type SelectableRole = Exclude<UserRole, "teacher">;
-
-interface RoleOption {
-  role: SelectableRole;
-  title: string;
-  badge: string;
-  description: string;
-  icon: typeof GraduationCap;
-  redirectTarget: string;
-  defaultOrg: string;
-  defaultDept: string;
-}
-
-const ROLE_OPTIONS: RoleOption[] = [
-  {
-    role: "student",
-    title: "Student",
-    badge: "Student / Researcher",
-    description: "Access learning tools, vernacular speech labs, and apply for industry capstones",
-    icon: GraduationCap,
-    redirectTarget: "/workspace",
-    defaultOrg: "Indian Institute of Technology",
-    defaultDept: "Computer Science & Engineering",
-  },
-  {
-    role: "faculty",
-    title: "Faculty",
-    badge: "Faculty / Investigator",
-    description: "Manage curriculum, research projects, student mentoring, and grant proposals",
-    icon: BookOpen,
-    redirectTarget: "/dashboard",
-    defaultOrg: "Central University of Technology",
-    defaultDept: "Applied AI & Linguistics",
-  },
-];
-
 function SignupPage() {
   const navigate = useNavigate();
-  const [selectedRole, setSelectedRole] = useState<SelectableRole>("student");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -83,11 +45,6 @@ function SignupPage() {
       navigate({ to: "/workspace", replace: true });
     }
   }, [navigate]);
-
-  function handleRoleChange(role: SelectableRole) {
-    setSelectedRole(role);
-    setError("");
-  }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -133,7 +90,7 @@ function SignupPage() {
         name: trimmedName,
         email: trimmedEmail,
         password,
-        role: selectedRole,
+        role: "student",
       });
 
       navigate({ to: "/workspace", replace: true });
@@ -143,8 +100,6 @@ function SignupPage() {
       setLoading(false);
     }
   }
-
-  const activeOption = ROLE_OPTIONS.find((r) => r.role === selectedRole) ?? ROLE_OPTIONS[0]!;
 
   return (
     <div className="flex min-h-screen flex-col justify-center bg-background px-4 py-12 text-foreground sm:px-6 lg:px-8">
@@ -168,65 +123,12 @@ function SignupPage() {
             </Link>
           </div>
           <p className="mt-2.5 text-sm text-muted-foreground">
-            Create an account to join the network as a Student or Faculty member.
+            Create a Student account to join the network.
           </p>
         </div>
 
         {/* Auth Card */}
         <div className="mt-8 rounded-2xl border border-border bg-card p-6 shadow-xl sm:p-8">
-          {/* Step 1: Select Role */}
-          <div className="mb-6">
-            <label className="mb-2.5 block text-xs font-bold uppercase tracking-wider text-muted-foreground">
-              Step 1: Select Your Affiliation Role
-            </label>
-            <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-              {ROLE_OPTIONS.map((r) => {
-                const isSelected = selectedRole === r.role;
-                const IconComponent = r.icon;
-                return (
-                  <button
-                    key={r.role}
-                    type="button"
-                    onClick={() => handleRoleChange(r.role)}
-                    className={[
-                      "group relative flex flex-col items-center rounded-xl border p-3 text-center transition-all duration-150",
-                      isSelected
-                        ? "border-primary bg-primary/10 text-primary shadow-sm ring-1 ring-primary"
-                        : "border-border bg-background/60 text-muted-foreground hover:border-muted-foreground/40 hover:bg-background hover:text-foreground",
-                    ].join(" ")}
-                  >
-                    <IconComponent
-                      className={[
-                        "size-5 transition",
-                        isSelected
-                          ? "text-primary"
-                          : "text-muted-foreground group-hover:text-foreground",
-                      ].join(" ")}
-                    />
-                    <span className="mt-1.5 text-xs font-bold tracking-tight">{r.title}</span>
-                    {isSelected && (
-                      <span className="absolute -top-1.5 -right-1.5 flex size-4 items-center justify-center rounded-full bg-primary text-[10px] text-primary-foreground shadow">
-                        ✓
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="mt-3 flex items-start gap-2.5 rounded-xl border border-primary/20 bg-primary/5 p-3 text-xs text-foreground">
-              <span className="rounded-md bg-primary/20 px-1.5 py-0.5 font-bold text-primary">
-                {activeOption.badge}
-              </span>
-              <p className="flex-1 text-muted-foreground">
-                {activeOption.description} &bull;{" "}
-                <span className="font-semibold text-foreground">
-                  Redirects to {activeOption.redirectTarget}
-                </span>
-              </p>
-            </div>
-          </div>
-
           {/* Form */}
           <form className="space-y-4" onSubmit={handleSubmit} noValidate>
             <div>
