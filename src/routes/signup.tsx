@@ -2,14 +2,12 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { getCurrentUser, isValidEmail, signUp } from "@/lib/auth";
 import {
-  GraduationCap,
   ArrowRight,
   User,
   Mail,
   Lock,
   Eye,
   EyeOff,
-  Building,
   AlertCircle,
   CheckCircle2,
 } from "lucide-react";
@@ -245,7 +243,7 @@ function SignupPage() {
                 <span>Registering Account...</span>
               ) : (
                 <>
-                  <span>Create {activeOption.title} Account</span>
+                  <span>Create Student Account</span>
                   <ArrowRight className="size-4" />
                 </>
               )}
